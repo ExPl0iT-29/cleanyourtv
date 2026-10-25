@@ -110,7 +110,7 @@ public class DockDecoration extends RecyclerView.ItemDecoration {
             }
         }
         if (!any) return;
-        float pad = 14 * density;
+        float pad = 4 * density;
         // The band can only draw inside the grid, and the first and last dock tiles sit 12dp in from its
         // edges: a full 14dp at the sides sliced the rounded ends flat (#454). Keep the sides, with the
         // 1dp edge line, inside the grid; the top and bottom have room.

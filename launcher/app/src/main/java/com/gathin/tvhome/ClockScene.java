@@ -167,13 +167,14 @@ final class ClockScene {
         }).start();
     }
 
-    /** A random spot that keeps the whole clock on screen, with the glow centred behind it. */
+    /** A small jitter around the top-left corner (clear of burn-in, never far from the corner), glow centred behind it. */
     private void placeClock() {
         View parent = (View) content.getParent();
-        int maxX = Math.max(0, parent.getWidth() - content.getWidth());
-        int maxY = Math.max(0, parent.getHeight() - content.getHeight());
-        float x = maxX * (0.1f + 0.8f * random.nextFloat());
-        float y = maxY * (0.1f + 0.8f * random.nextFloat());
+        float dp = parent.getResources().getDisplayMetrics().density;
+        float margin = 48 * dp;
+        float jitter = 24 * dp;
+        float x = margin + jitter * random.nextFloat();
+        float y = margin + jitter * random.nextFloat();
         content.setX(x);
         content.setY(y);
         if (parent.getWidth() > 0 && parent.getHeight() > 0) {
